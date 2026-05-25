@@ -335,7 +335,7 @@ tr:hover td { background: #1c2128; }
 
 @media (max-width: 700px) {
   .metrics { grid-template-columns: repeat(2, 1fr); }
-  .name-cell { max-width: 160px; }
+  .name-cell { max-width: 140px; }
 }
 
 /* ── KPI Cards ─────────────────────────────────────────── */
@@ -430,8 +430,11 @@ tr:hover td { background: #1c2128; }
 }
 
 @media (max-width: 500px) {
-  .kpi-grid { grid-template-columns: 1fr 1fr; }
-  .kpi-value { font-size: 22px; }
+  .kpi-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
+  .kpi-value { font-size: 20px; }
+  .kpi-icon-area { width: 60px; min-width: 60px; }
+  .kpi-svg-icon { width: 34px; height: 34px; }
+  .kpi-content { padding: 0.85rem 0.9rem; }
 }
 
 /* ── Date Range Picker ──────────────────────────────────── */
@@ -626,10 +629,71 @@ tr:hover td { background: #1c2128; }
   flex-shrink: 0;
 }
 
-@media (max-width: 700px) {
-  .controls-bar { flex-direction: column; align-items: flex-start; }
-  .date-picker-row { flex-direction: column; align-items: flex-start; }
+/* ══════════════════════════════════════════════════════════
+   📱 MOBILE RESPONSIVE
+   ══════════════════════════════════════════════════════════ */
+
+/* Tablet — 768px */
+@media (max-width: 768px) {
+  /* Login */
+  .page { padding: 1rem; }
+  .connect-card { padding: 2rem 1.5rem; }
+
+  /* Dashboard */
+  .dashboard { padding: 1rem; }
+
+  /* Header */
+  .dash-header { flex-direction: column; align-items: flex-start; gap: 10px; margin-bottom: 1rem; }
+  .dash-header h1 { font-size: 18px; }
+
+  /* Controls bar */
+  .controls-bar { flex-direction: column; align-items: stretch; gap: 8px; }
+  .account-wrap { width: 100%; }
+  .account-select { min-width: unset; max-width: unset; width: 100%; }
+
+  /* Date picker */
+  .date-picker-row { flex-wrap: wrap; width: 100%; }
+  .date-presets { flex-wrap: wrap; }
   .date-divider { width: 100%; height: 1px; margin: 4px 0; }
+  .date-custom { flex-wrap: wrap; gap: 6px; }
+
+  /* Refresh bar */
+  .refresh-next { display: none; }
+
+  /* Chart */
+  .chart-wrap { padding: 1rem; }
+}
+
+/* Mobile — 480px */
+@media (max-width: 480px) {
+  /* Login */
+  .connect-card { padding: 1.5rem 1rem; border-radius: 8px; }
+  .connect-card h1 { font-size: 19px; }
+  .input-row { flex-direction: column; }
+  .btn-primary { width: 100%; padding: 12px; }
+  .meta-logo { width: 70px; }
+
+  /* Dashboard */
+  .dashboard { padding: 0.75rem; }
+  .dash-header { margin-bottom: 0.75rem; }
+  .dash-header h1 { font-size: 16px; }
+  .sub { font-size: 11px; }
+
+  /* KPI */
+  .kpi-grid { margin-bottom: 1rem; }
+  .kpi-label { font-size: 10px; }
+  .kpi-sub { font-size: 11px; }
+
+  /* Refresh bar */
+  .refresh-bar { padding: 6px 10px; font-size: 11px; }
+  .refresh-status span:not(.refresh-dot) { font-size: 11px; }
+
+  /* Table */
+  .name-cell { max-width: 110px; }
+  .search-input { min-width: unset; width: 100%; }
+
+  /* Chart */
+  .chart-title { font-size: 11px; }
 }
 
 /* ── Footer ─────────────────────────────────────────────── */
