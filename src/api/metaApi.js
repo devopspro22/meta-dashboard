@@ -27,16 +27,20 @@ export async function fetchAdAccounts(token) {
 export async function fetchCampaigns(accountId, token, dateConfig = 'last_30d') {
   if (!token) throw new Error('Access token is required');
 
-  // For insights field: presets use date_preset param, custom uses time_range
-  const insightsParam = typeof dateConfig === 'object'
-    ? `insights{spend,impressions,clicks,ctr,cpm,reach,actions,purchase_roas}`
-    : `insights.date_preset(${dateConfig}){spend,impressions,clicks,ctr,cpm,reach,actions,purchase_roas}`;
+  // For nested insights, date must be embedded in the field selector itself.
+  // Presets use date_preset(X), custom dates use time_range({"since":...,"until":...})
+  let insightsParam;
+  if (typeof dateConfig === 'object') {
+    const tr = JSON.stringify({ since: dateConfig.since, until: dateConfig.until });
+    insightsParam = `insights.time_range(${tr}){spend,impressions,clicks,ctr,cpm,reach,actions,purchase_roas}`;
+  } else {
+    insightsParam = `insights.date_preset(${dateConfig}){spend,impressions,clicks,ctr,cpm,reach,actions,purchase_roas}`;
+  }
 
   const fields = ['name', 'status', 'objective', insightsParam].join(',');
-  const dateParam = buildDateParam(dateConfig);
 
   const res = await fetch(
-    `${FB_API}/${accountId}/campaigns?fields=${fields}&limit=100&${dateParam}&access_token=${token}`
+    `${FB_API}/${accountId}/campaigns?fields=${encodeURIComponent(fields)}&limit=100&access_token=${token}`
   );
   const data = await res.json();
   if (data.error) throw new Error(data.error.message);
@@ -58,22 +62,27 @@ export async function fetchDailyInsights(accountId, token, dateConfig = 'last_30
   return data.data || [];
 }
 
-// Conversion action types we treat as "leads"
-const CONVERSION_TYPES = [
-  'lead',                                                    // Lead Gen form
-  'onsite_conversion.lead_grouped',                          // Lead Gen (grouped)
-  'onsite_conversion.messaging_conversation_started_7d',     // WhatsApp / Messenger שיחה נפתחה
-  'onsite_conversion.messaging_first_reply',                 // WhatsApp תשובה ראשונה
-  'onsite_conversion.messaging_welcome_message_views',       // WhatsApp welcome view
-];
-
-// Helper: extract conversion count from actions array (leads OR WhatsApp conversations)
+// Helper: extract conversion count from actions array
+// Uses a priority system to avoid double-counting across action types.
 export function getLeads(actions = []) {
-  // Sum all matching conversion types (campaign might have multiple)
-  const total = actions
-    .filter((a) => CONVERSION_TYPES.includes(a.action_type))
-    .reduce((sum, a) => sum + parseInt(a.value, 10), 0);
-  return total;
+  if (!actions || actions.length === 0) return 0;
+
+  const find = (type) => actions.find((a) => a.action_type === type);
+  const val  = (a)    => parseInt(a.value, 10) || 0;
+
+  // 1. Lead Gen form submit — the canonical metric for lead-form campaigns
+  const formLead = find('lead');
+  if (formLead) return val(formLead);
+
+  // 2. WhatsApp conversation started — for messaging/WhatsApp campaigns
+  const waConv = find('onsite_conversion.messaging_conversation_started_7d');
+  if (waConv) return val(waConv);
+
+  // 3. Messenger first reply — fallback for messaging campaigns
+  const reply = find('onsite_conversion.messaging_first_reply');
+  if (reply) return val(reply);
+
+  return 0;
 }
 
 // Helper: extract ROAS from purchase_roas array

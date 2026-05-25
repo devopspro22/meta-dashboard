@@ -75,33 +75,39 @@ export function Dashboard({ token, accounts, onDisconnect }) {
       {/* Header */}
       <header className="dash-header">
         <div>
-          <h1>📊 Meta Ads Dashboard</h1>
+          <h1><img src="/dashboard.svg" alt="" className="header-svg-icon" /> Meta Ads Dashboard</h1>
           <span className="sub">נתונים בזמן אמת · מתעדכן אוטומטית</span>
         </div>
-        <div className="header-actions">
-          <DateRangePicker value={dateConfig} onChange={handleDateChange} />
-          <button onClick={onDisconnect} className="btn-outline">🔌 התנתק</button>
-        </div>
+        <button onClick={onDisconnect} className="btn-outline btn-disconnect">
+          <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M18.36 6.64a9 9 0 1 1-12.73 0"/>
+            <line x1="12" y1="2" x2="12" y2="12"/>
+          </svg>
+          התנתק
+        </button>
       </header>
 
-      {/* Account selector */}
-      {accounts.length > 0 && (
-        <div className="accounts-bar">
-          <span className="bar-label">חשבון פרסום:</span>
-          <select
-            className="account-select"
-            value={selectedAccount?.id || ''}
-            onChange={(e) => {
-              const acc = accounts.find((a) => a.id === e.target.value);
-              if (acc) handleAccountChange(acc);
-            }}
-          >
-            {accounts.map((acc) => (
-              <option key={acc.id} value={acc.id}>{acc.name}</option>
-            ))}
-          </select>
-        </div>
-      )}
+      {/* Controls bar: date range + account selector */}
+      <div className="controls-bar">
+        <DateRangePicker value={dateConfig} onChange={handleDateChange} />
+        {accounts.length > 0 && (
+          <div className="account-wrap">
+            <span className="bar-label">חשבון:</span>
+            <select
+              className="account-select"
+              value={selectedAccount?.id || ''}
+              onChange={(e) => {
+                const acc = accounts.find((a) => a.id === e.target.value);
+                if (acc) handleAccountChange(acc);
+              }}
+            >
+              {accounts.map((acc) => (
+                <option key={acc.id} value={acc.id}>{acc.name}</option>
+              ))}
+            </select>
+          </div>
+        )}
+      </div>
 
       {/* Refresh bar */}
       <RefreshBar
@@ -116,10 +122,10 @@ export function Dashboard({ token, accounts, onDisconnect }) {
 
       {/* KPI Cards */}
       <div className="kpi-grid">
-        <KpiCard icon="💸" label="הוצאות" value={formatCurrency(totals.spend, sym)} sub={`${activeCount} קמפיינים פעילים`} color="blue" />
-        <KpiCard icon="🎯" label="המרות" value={totals.leads > 0 ? formatNumber(totals.leads) : '—'} sub={totals.leads > 0 ? `עלות/המרה: ${formatCpl(totals.spend, totals.leads, sym)}` : 'אין המרות בתקופה'} color="green" />
-        <KpiCard icon="📈" label="ROAS" value={formatRoas(avgRoas)} sub={avgRoas ? 'ממוצע כל הקמפיינים' : 'אין נתוני ROAS'} color="purple" />
-        <KpiCard icon="🖱️" label="קמפיינים" value={campaigns.length} sub={`${activeCount} פעילים · ${campaigns.length - activeCount} מושהים`} color="orange" />
+        <KpiCard icon={<img src="/cost.svg" alt="הוצאות" className="kpi-svg-icon" />} label="הוצאות" value={formatCurrency(totals.spend, sym)} sub={`${activeCount} קמפיינים פעילים`} color="blue" />
+        <KpiCard icon={<img src="/conversion.svg" alt="המרות" className="kpi-svg-icon" />} label="המרות" value={totals.leads > 0 ? formatNumber(totals.leads) : '—'} sub={totals.leads > 0 ? `עלות/המרה: ${formatCpl(totals.spend, totals.leads, sym)}` : 'אין המרות בתקופה'} color="green" />
+        <KpiCard icon={<img src="/ROAS.svg" alt="ROAS" className="kpi-svg-icon" />} label="ROAS" value={formatRoas(avgRoas)} sub={avgRoas ? 'ממוצע כל הקמפיינים' : 'אין נתוני ROAS'} color="purple" />
+        <KpiCard icon={<img src="/campaigns.svg" alt="קמפיינים" className="kpi-svg-icon" />} label="קמפיינים" value={campaigns.length} sub={`${activeCount} פעילים · ${campaigns.length - activeCount} מושהים`} color="orange" />
       </div>
 
       {/* Chart */}
@@ -138,6 +144,11 @@ export function Dashboard({ token, accounts, onDisconnect }) {
       )}
 
       {loading && <div className="loading">⏳ טוען נתונים...</div>}
+
+      {/* Footer */}
+      <footer className="dash-footer">
+        Developed by Digital IN
+      </footer>
     </div>
   );
 }

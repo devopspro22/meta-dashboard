@@ -30,6 +30,7 @@ export function formatCpl(spend, leads, symbol = '₪') {
 
 // Convert date_preset key to human label
 export const DATE_PRESETS = [
+  { key: 'today',      label: 'היום' },
   { key: 'last_7d',    label: '7 ימים' },
   { key: 'last_14d',   label: '14 ימים' },
   { key: 'last_30d',   label: '30 ימים' },

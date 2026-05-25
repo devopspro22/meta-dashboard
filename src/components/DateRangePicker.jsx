@@ -5,42 +5,40 @@ export function DateRangePicker({ value, onChange }) {
   // value is either a preset string ('last_30d') or a custom object ({ since, until })
   const isCustomActive = typeof value === 'object';
 
-  // Init custom inputs from current value if already custom
   const [customFrom, setCustomFrom] = useState(isCustomActive ? value.since : '');
   const [customTo,   setCustomTo]   = useState(isCustomActive ? value.until : '');
 
-  const handleApply = () => {
-    if (customFrom && customTo && customFrom <= customTo) {
-      onChange({ since: customFrom, until: customTo });
-    }
-  };
+  const canApply = customFrom && customTo && customFrom <= customTo;
 
-  const handlePreset = (key) => {
-    onChange(key);
+  const handleApply = () => {
+    if (canApply) onChange({ since: customFrom, until: customTo });
   };
 
   return (
-    <div className="date-range-picker-wrap">
+    <div className="date-picker-row">
       {/* Quick presets */}
-      <div className="date-range-picker">
+      <div className="date-presets">
         {DATE_PRESETS.map((preset) => (
           <button
             key={preset.key}
             className={`range-btn ${!isCustomActive && value === preset.key ? 'range-btn-active' : ''}`}
-            onClick={() => handlePreset(preset.key)}
+            onClick={() => onChange(preset.key)}
           >
             {preset.label}
           </button>
         ))}
       </div>
 
+      {/* Separator */}
+      <div className="date-divider" />
+
       {/* Custom date range */}
-      <div className={`custom-range ${isCustomActive ? 'custom-range-active' : ''}`}>
+      <div className="date-custom">
         <input
           type="date"
           value={customFrom}
           onChange={(e) => setCustomFrom(e.target.value)}
-          className="date-input"
+          className={`date-input${isCustomActive ? ' date-input-active' : ''}`}
           max={customTo || undefined}
         />
         <span className="date-sep">עד</span>
@@ -48,13 +46,13 @@ export function DateRangePicker({ value, onChange }) {
           type="date"
           value={customTo}
           onChange={(e) => setCustomTo(e.target.value)}
-          className="date-input"
+          className={`date-input${isCustomActive ? ' date-input-active' : ''}`}
           min={customFrom || undefined}
         />
         <button
-          className={`range-btn ${isCustomActive ? 'range-btn-active' : ''}`}
+          className={`range-btn range-btn-apply${isCustomActive ? ' range-btn-active' : ''}`}
           onClick={handleApply}
-          disabled={!customFrom || !customTo || customFrom > customTo}
+          disabled={!canApply}
         >
           החל
         </button>

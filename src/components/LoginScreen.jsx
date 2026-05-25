@@ -10,7 +10,9 @@ export function LoginScreen({ onConnect, loading, error }) {
   return (
     <div className="page">
       <div className="connect-card">
-        <div className="logo">📊</div>
+        <div className="logo-wrap">
+          <img src="/meta-logo.png" alt="Meta" className="meta-logo" />
+        </div>
         <h1>Meta Ads Dashboard</h1>
         <p className="desc">
           התחבר עם Meta Access Token לצפייה בביצועי הקמפיינים שלך.

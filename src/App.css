@@ -26,7 +26,16 @@ body {
   text-align: center;
 }
 
-.logo { font-size: 48px; margin-bottom: 1rem; }
+.logo-wrap {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.25rem;
+}
+
+.meta-logo {
+  width: 90px;
+  height: auto;
+}
 
 .connect-card h1 {
   font-size: 22px;
@@ -92,6 +101,13 @@ body {
 
 .btn-outline:hover { background: #21262d; }
 
+.btn-disconnect {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.btn-disconnect:hover { color: #f48771; border-color: #7d2d2d; }
+
 .error {
   background: #3d1a1a;
   border: 1px solid #7d2d2d;
@@ -140,7 +156,8 @@ body {
   margin-bottom: 1.5rem;
 }
 
-.dash-header h1 { font-size: 20px; font-weight: 600; }
+.dash-header h1 { font-size: 20px; font-weight: 600; display: flex; align-items: center; gap: 8px; }
+.header-svg-icon { width: 24px; height: 24px; object-fit: contain; }
 .sub { font-size: 13px; color: #8b949e; display: block; margin-top: 3px; }
 
 .accounts-bar {
@@ -333,10 +350,12 @@ tr:hover td { background: #1c2128; }
   background: #161b22;
   border: 1px solid #21262d;
   border-radius: 12px;
-  padding: 1.25rem 1.5rem;
   position: relative;
   overflow: hidden;
   transition: border-color 0.2s;
+  display: flex;
+  flex-direction: row;
+  min-height: 100px;
 }
 
 .kpi-card:hover { border-color: #30363d; }
@@ -355,14 +374,29 @@ tr:hover td { background: #1c2128; }
 .kpi-orange::before { background: #f0883e; }
 .kpi-default::before { background: #30363d; }
 
-.kpi-header {
+/* תוכן הכרטיסייה (ימין ב-RTL) */
+.kpi-content {
+  flex: 1;
+  padding: 1.1rem 1.4rem;
   display: flex;
-  align-items: center;
-  gap: 6px;
-  margin-bottom: 0.75rem;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.35rem;
 }
 
-.kpi-icon { font-size: 16px; }
+/* פאנל האייקון (שמאל ב-RTL) */
+.kpi-icon-area {
+  width: 78px;
+  min-width: 78px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.03);
+  border-right: 1px solid #21262d;
+}
+
+.kpi-icon { font-size: 30px; display: flex; align-items: center; }
+.kpi-svg-icon { width: 46px; height: 46px; object-fit: contain; }
 
 .kpi-label {
   font-size: 12px;
@@ -377,7 +411,6 @@ tr:hover td { background: #1c2128; }
   font-weight: 700;
   color: #e6edf3;
   line-height: 1;
-  margin-bottom: 0.4rem;
 }
 
 .kpi-sub {
@@ -402,17 +435,54 @@ tr:hover td { background: #1c2128; }
 }
 
 /* ── Date Range Picker ──────────────────────────────────── */
-.date-range-picker {
+.controls-bar {
   display: flex;
-  gap: 4px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.account-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.date-picker-row {
+  display: flex;
+  align-items: center;
+  gap: 0;
   background: #161b22;
   border: 1px solid #21262d;
   border-radius: 8px;
   padding: 3px;
+  flex-wrap: wrap;
+}
+
+.date-presets {
+  display: flex;
+  gap: 2px;
+}
+
+.date-divider {
+  width: 1px;
+  height: 22px;
+  background: #30363d;
+  margin: 0 6px;
+  flex-shrink: 0;
+}
+
+.date-custom {
+  display: flex;
+  align-items: center;
+  gap: 4px;
 }
 
 .range-btn {
-  padding: 5px 14px;
+  padding: 5px 12px;
   border-radius: 6px;
   font-size: 12px;
   font-weight: 500;
@@ -421,10 +491,20 @@ tr:hover td { background: #1c2128; }
   color: #8b949e;
   cursor: pointer;
   transition: all 0.15s;
+  white-space: nowrap;
 }
 
-.range-btn:hover { color: #e6edf3; }
+.range-btn:hover:not(:disabled) { color: #e6edf3; }
 .range-btn-active { background: #21262d; color: #e6edf3; }
+
+.range-btn-apply {
+  background: #21262d;
+  color: #e6edf3;
+  padding: 5px 10px;
+  margin-right: 2px;
+}
+.range-btn-apply:hover:not(:disabled) { background: #1877F2; color: #fff; }
+.range-btn-apply:disabled { opacity: 0.35; cursor: not-allowed; }
 
 /* ── Refresh Bar ────────────────────────────────────────── */
 .refresh-bar {
@@ -507,7 +587,6 @@ tr:hover td { background: #1c2128; }
   display: flex;
   align-items: center;
   gap: 8px;
-  flex-wrap: wrap;
 }
 
 /* ── Account Select ─────────────────────────────────────── */
@@ -524,34 +603,41 @@ tr:hover td { background: #1c2128; }
 }
 .account-select:focus { outline: none; border-color: #1877F2; }
 
-/* ── Custom Date Range ──────────────────────────────────── */
-.date-range-picker-wrap {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  align-items: flex-end;
-}
-
-.custom-range {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
+/* ── Date inputs ────────────────────────────────────────── */
 .date-input {
-  padding: 5px 8px;
-  background: #161b22;
-  border: 1px solid #30363d;
+  padding: 4px 6px;
+  background: transparent;
+  border: 1px solid transparent;
   border-radius: 6px;
   color: #e6edf3;
   font-size: 12px;
   cursor: pointer;
+  direction: ltr;
+  min-width: 0;
+  color-scheme: dark;
 }
-.date-input:focus { outline: none; border-color: #1877F2; }
-
-.custom-range-active .date-input { border-color: #1877F2; }
+.date-input:hover { border-color: #30363d; background: #21262d; }
+.date-input:focus { outline: none; border-color: #1877F2; background: #21262d; }
+.date-input-active { border-color: #1877F2 !important; background: #21262d; }
 
 .date-sep {
   font-size: 11px;
   color: #8b949e;
+  flex-shrink: 0;
 }
+
+@media (max-width: 700px) {
+  .controls-bar { flex-direction: column; align-items: flex-start; }
+  .date-picker-row { flex-direction: column; align-items: flex-start; }
+  .date-divider { width: 100%; height: 1px; margin: 4px 0; }
+}
+
+/* ── Footer ─────────────────────────────────────────────── */
+.dash-footer {
+  text-align: center;
+  padding: 1.5rem 0 0.5rem;
+  font-size: 12px;
+  color: #484f58;
+  letter-spacing: 0.3px;
+}
+
