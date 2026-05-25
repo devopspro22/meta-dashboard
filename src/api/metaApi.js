@@ -2,9 +2,11 @@ const FB_API = 'https://graph.facebook.com/v19.0';
 
 // Fetch all ad accounts for a token
 export async function fetchAdAccounts(token) {
+  if (!token) throw new Error('Access token is required');
   const res = await fetch(
     `${FB_API}/me/adaccounts?fields=name,account_id,currency,account_status&access_token=${token}`
   );
+  if (!res.ok) throw new Error(`HTTP ${res.status}: ${res.statusText}`);
   const data = await res.json();
   if (data.error) throw new Error(data.error.message);
   return data.data || [];
@@ -13,6 +15,7 @@ export async function fetchAdAccounts(token) {
 // Fetch campaigns with aggregate insights for a date range
 // datePreset: 'last_7d' | 'last_14d' | 'last_30d'
 export async function fetchCampaigns(accountId, token, datePreset = 'last_30d') {
+  if (!token) throw new Error('Access token is required');
   const fields = [
     'name',
     'status',
@@ -25,6 +28,7 @@ export async function fetchCampaigns(accountId, token, datePreset = 'last_30d') 
   const res = await fetch(
     `${FB_API}/${accountId}/campaigns?fields=${fields}&limit=100&access_token=${token}`
   );
+  if (!res.ok) throw new Error(`HTTP ${res.status}: ${res.statusText}`);
   const data = await res.json();
   if (data.error) throw new Error(data.error.message);
   return data.data || [];
@@ -33,9 +37,11 @@ export async function fetchCampaigns(accountId, token, datePreset = 'last_30d') 
 // Fetch daily time-series data for the chart
 // datePreset: 'last_7d' | 'last_14d' | 'last_30d'
 export async function fetchDailyInsights(accountId, token, datePreset = 'last_30d') {
+  if (!token) throw new Error('Access token is required');
   const res = await fetch(
     `${FB_API}/${accountId}/insights?fields=spend,impressions,clicks,actions&date_preset=${datePreset}&time_increment=1&access_token=${token}`
   );
+  if (!res.ok) throw new Error(`HTTP ${res.status}: ${res.statusText}`);
   const data = await res.json();
   if (data.error) throw new Error(data.error.message);
   return data.data || [];
