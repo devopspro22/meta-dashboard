@@ -114,7 +114,7 @@ export function Dashboard({ token, accounts, onDisconnect }) {
       {/* KPI Cards */}
       <div className="kpi-grid">
         <KpiCard icon="💸" label="הוצאות" value={formatCurrency(totals.spend, sym)} sub={`${activeCount} קמפיינים פעילים`} color="blue" />
-        <KpiCard icon="🎯" label="לידים" value={totals.leads > 0 ? formatNumber(totals.leads) : '—'} sub={totals.leads > 0 ? `CPL: ${formatCpl(totals.spend, totals.leads, sym)}` : 'אין לידים בתקופה'} color="green" />
+        <KpiCard icon="🎯" label="המרות" value={totals.leads > 0 ? formatNumber(totals.leads) : '—'} sub={totals.leads > 0 ? `עלות/המרה: ${formatCpl(totals.spend, totals.leads, sym)}` : 'אין המרות בתקופה'} color="green" />
         <KpiCard icon="📈" label="ROAS" value={formatRoas(avgRoas)} sub={avgRoas ? 'ממוצע כל הקמפיינים' : 'אין נתוני ROAS'} color="purple" />
         <KpiCard icon="🖱️" label="קמפיינים" value={campaigns.length} sub={`${activeCount} פעילים · ${campaigns.length - activeCount} מושהים`} color="orange" />
       </div>

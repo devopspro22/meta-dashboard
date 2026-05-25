@@ -46,12 +46,22 @@ export async function fetchDailyInsights(accountId, token, datePreset = 'last_30
   return data.data || [];
 }
 
-// Helper: extract lead count from actions array
+// Conversion action types we treat as "leads"
+const CONVERSION_TYPES = [
+  'lead',                                                    // Lead Gen form
+  'onsite_conversion.lead_grouped',                          // Lead Gen (grouped)
+  'onsite_conversion.messaging_conversation_started_7d',     // WhatsApp / Messenger שיחה נפתחה
+  'onsite_conversion.messaging_first_reply',                 // WhatsApp תשובה ראשונה
+  'onsite_conversion.messaging_welcome_message_views',       // WhatsApp welcome view
+];
+
+// Helper: extract conversion count from actions array (leads OR WhatsApp conversations)
 export function getLeads(actions = []) {
-  const leadAction = actions.find(
-    (a) => a.action_type === 'lead' || a.action_type === 'onsite_conversion.lead_grouped'
-  );
-  return leadAction ? parseInt(leadAction.value, 10) : 0;
+  // Sum all matching conversion types (campaign might have multiple)
+  const total = actions
+    .filter((a) => CONVERSION_TYPES.includes(a.action_type))
+    .reduce((sum, a) => sum + parseInt(a.value, 10), 0);
+  return total;
 }
 
 // Helper: extract ROAS from purchase_roas array

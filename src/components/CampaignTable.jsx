@@ -72,9 +72,9 @@ export function CampaignTable({ campaigns, symbol, search, onSearchChange, statu
                 הוצאות <SortIcon col="spend" />
               </th>
               <th className="sortable" onClick={() => handleSort('leads')}>
-                לידים <SortIcon col="leads" />
+                המרות <SortIcon col="leads" />
               </th>
-              <th>CPL</th>
+              <th>עלות/המרה</th>
               <th className="sortable" onClick={() => handleSort('roas')}>
                 ROAS <SortIcon col="roas" />
               </th>
