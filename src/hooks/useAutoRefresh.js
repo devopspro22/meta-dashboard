@@ -46,7 +46,7 @@ export function useAutoRefresh(onRefresh) {
       clearInterval(intervalRef.current);
       clearInterval(countdownRef.current);
     };
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+  }, []); // eslint-disable-line
 
   return { lastUpdated, secondsUntilRefresh, triggerRefresh };
 }

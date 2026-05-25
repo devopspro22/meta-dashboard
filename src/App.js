@@ -18,7 +18,7 @@ function App() {
     const savedToken = localStorage.getItem(LS_KEY);
     const tok = envToken || savedToken;
     if (tok) connectWithToken(tok);
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+  }, []); // eslint-disable-line
 
   const connectWithToken = async (tok) => {
     setLoading(true);
