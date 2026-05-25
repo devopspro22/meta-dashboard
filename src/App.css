@@ -465,3 +465,12 @@ tr:hover td { background: #1c2128; }
 }
 
 .btn-sm { padding: 4px 10px; font-size: 12px; }
+
+/* ── Table Enhancements ─────────────────────────────────── */
+.sortable { cursor: pointer; user-select: none; }
+.sortable:hover { color: #e6edf3; }
+.sort-icon { margin-right: 4px; opacity: 0.4; font-size: 10px; }
+.sort-icon.active { opacity: 1; color: #58a6ff; }
+
+.leads-positive { color: #3fb950; font-weight: 600; }
+.roas-positive  { color: #a371f7; font-weight: 600; }
