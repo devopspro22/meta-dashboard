@@ -11,7 +11,7 @@ export function LoginScreen({ onConnect, loading, error }) {
     <div className="page">
       <div className="connect-card">
         <div className="logo-wrap">
-          <img src="/meta-logo.png" alt="Meta" className="meta-logo" />
+          <img src={`${process.env.PUBLIC_URL}/meta-logo.png`} alt="Meta" className="meta-logo" />
         </div>
         <h1>Meta Ads Dashboard</h1>
         <p className="desc">

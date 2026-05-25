@@ -75,7 +75,7 @@ export function Dashboard({ token, accounts, onDisconnect }) {
       {/* Header */}
       <header className="dash-header">
         <div>
-          <h1><img src="/dashboard.svg" alt="" className="header-svg-icon" /> Meta Ads Dashboard</h1>
+          <h1><img src={`${process.env.PUBLIC_URL}/dashboard.svg`} alt="" className="header-svg-icon" /> Meta Ads Dashboard</h1>
           <span className="sub">נתונים בזמן אמת · מתעדכן אוטומטית</span>
         </div>
         <button onClick={onDisconnect} className="btn-outline btn-disconnect">
@@ -122,10 +122,10 @@ export function Dashboard({ token, accounts, onDisconnect }) {
 
       {/* KPI Cards */}
       <div className="kpi-grid">
-        <KpiCard icon={<img src="/cost.svg" alt="הוצאות" className="kpi-svg-icon" />} label="הוצאות" value={formatCurrency(totals.spend, sym)} sub={`${activeCount} קמפיינים פעילים`} color="blue" />
-        <KpiCard icon={<img src="/conversion.svg" alt="המרות" className="kpi-svg-icon" />} label="המרות" value={totals.leads > 0 ? formatNumber(totals.leads) : '—'} sub={totals.leads > 0 ? `עלות/המרה: ${formatCpl(totals.spend, totals.leads, sym)}` : 'אין המרות בתקופה'} color="green" />
-        <KpiCard icon={<img src="/ROAS.svg" alt="ROAS" className="kpi-svg-icon" />} label="ROAS" value={formatRoas(avgRoas)} sub={avgRoas ? 'ממוצע כל הקמפיינים' : 'אין נתוני ROAS'} color="purple" />
-        <KpiCard icon={<img src="/campaigns.svg" alt="קמפיינים" className="kpi-svg-icon" />} label="קמפיינים" value={campaigns.length} sub={`${activeCount} פעילים · ${campaigns.length - activeCount} מושהים`} color="orange" />
+        <KpiCard icon={<img src={`${process.env.PUBLIC_URL}/cost.svg`} alt="הוצאות" className="kpi-svg-icon" />} label="הוצאות" value={formatCurrency(totals.spend, sym)} sub={`${activeCount} קמפיינים פעילים`} color="blue" />
+        <KpiCard icon={<img src={`${process.env.PUBLIC_URL}/conversion.svg`} alt="המרות" className="kpi-svg-icon" />} label="המרות" value={totals.leads > 0 ? formatNumber(totals.leads) : '—'} sub={totals.leads > 0 ? `עלות/המרה: ${formatCpl(totals.spend, totals.leads, sym)}` : 'אין המרות בתקופה'} color="green" />
+        <KpiCard icon={<img src={`${process.env.PUBLIC_URL}/ROAS.svg`} alt="ROAS" className="kpi-svg-icon" />} label="ROAS" value={formatRoas(avgRoas)} sub={avgRoas ? 'ממוצע כל הקמפיינים' : 'אין נתוני ROAS'} color="purple" />
+        <KpiCard icon={<img src={`${process.env.PUBLIC_URL}/campaigns.svg`} alt="קמפיינים" className="kpi-svg-icon" />} label="קמפיינים" value={campaigns.length} sub={`${activeCount} פעילים · ${campaigns.length - activeCount} מושהים`} color="orange" />
       </div>
 
       {/* Chart */}
