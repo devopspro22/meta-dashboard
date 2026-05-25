@@ -19,10 +19,8 @@ export async function fetchCampaigns(accountId, token, datePreset = 'last_30d') 
   const fields = [
     'name',
     'status',
-    'daily_budget',
-    'lifetime_budget',
     'objective',
-    `insights.date_preset(${datePreset}){spend,impressions,clicks,ctr,cpm,reach,actions,cost_per_action_type,purchase_roas}`,
+    `insights.date_preset(${datePreset}){spend,impressions,clicks,ctr,cpm,reach,actions,purchase_roas}`,
   ].join(',');
 
   const res = await fetch(
