@@ -4,11 +4,12 @@ const FB_API = 'https://graph.facebook.com/v19.0';
 export async function fetchAdAccounts(token) {
   if (!token) throw new Error('Access token is required');
   const res = await fetch(
-    `${FB_API}/me/adaccounts?fields=name,account_id,currency,account_status&access_token=${token}`
+    `${FB_API}/me/adaccounts?fields=name,currency,account_status&access_token=${token}`
   );
-  if (!res.ok) throw new Error(`HTTP ${res.status}: ${res.statusText}`);
+  // Always parse JSON first — Meta API returns error details in JSON even on 4xx
   const data = await res.json();
   if (data.error) throw new Error(data.error.message);
+  if (!res.ok) throw new Error(`HTTP ${res.status}: ${res.statusText}`);
   return data.data || [];
 }
 
@@ -26,9 +27,9 @@ export async function fetchCampaigns(accountId, token, datePreset = 'last_30d') 
   const res = await fetch(
     `${FB_API}/${accountId}/campaigns?fields=${fields}&limit=100&access_token=${token}`
   );
-  if (!res.ok) throw new Error(`HTTP ${res.status}: ${res.statusText}`);
   const data = await res.json();
   if (data.error) throw new Error(data.error.message);
+  if (!res.ok) throw new Error(`HTTP ${res.status}: ${res.statusText}`);
   return data.data || [];
 }
 
@@ -39,9 +40,9 @@ export async function fetchDailyInsights(accountId, token, datePreset = 'last_30
   const res = await fetch(
     `${FB_API}/${accountId}/insights?fields=spend,impressions,clicks,actions&date_preset=${datePreset}&time_increment=1&access_token=${token}`
   );
-  if (!res.ok) throw new Error(`HTTP ${res.status}: ${res.statusText}`);
   const data = await res.json();
   if (data.error) throw new Error(data.error.message);
+  if (!res.ok) throw new Error(`HTTP ${res.status}: ${res.statusText}`);
   return data.data || [];
 }
 
