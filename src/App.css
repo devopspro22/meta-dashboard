@@ -509,3 +509,49 @@ tr:hover td { background: #1c2128; }
   gap: 8px;
   flex-wrap: wrap;
 }
+
+/* ── Account Select ─────────────────────────────────────── */
+.account-select {
+  padding: 7px 12px;
+  background: #161b22;
+  border: 1px solid #30363d;
+  border-radius: 8px;
+  color: #e6edf3;
+  font-size: 13px;
+  cursor: pointer;
+  min-width: 200px;
+  max-width: 340px;
+}
+.account-select:focus { outline: none; border-color: #1877F2; }
+
+/* ── Custom Date Range ──────────────────────────────────── */
+.date-range-picker-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  align-items: flex-end;
+}
+
+.custom-range {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.date-input {
+  padding: 5px 8px;
+  background: #161b22;
+  border: 1px solid #30363d;
+  border-radius: 6px;
+  color: #e6edf3;
+  font-size: 12px;
+  cursor: pointer;
+}
+.date-input:focus { outline: none; border-color: #1877F2; }
+
+.custom-range-active .date-input { border-color: #1877F2; }
+
+.date-sep {
+  font-size: 11px;
+  color: #8b949e;
+}

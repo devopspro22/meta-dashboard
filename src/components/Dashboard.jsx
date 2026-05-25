@@ -14,20 +14,20 @@ export function Dashboard({ token, accounts, onDisconnect }) {
   const [dailyData, setDailyData] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
-  const [datePreset, setDatePreset] = useState('last_30d');
+  const [dateConfig, setDateConfig] = useState('last_30d'); // string preset or { since, until }
   const [search, setSearch] = useState('');
   const [statusFilter, setStatusFilter] = useState('all');
 
   const sym = selectedAccount?.currency === 'ILS' ? '₪' : '$';
 
-  const loadData = useCallback(async (account = selectedAccount, preset = datePreset) => {
+  const loadData = useCallback(async (account = selectedAccount, dc = dateConfig) => {
     if (!account) return;
     setLoading(true);
     setError('');
     try {
       const [camps, daily] = await Promise.all([
-        fetchCampaigns(account.id, token, preset),
-        fetchDailyInsights(account.id, token, preset),
+        fetchCampaigns(account.id, token, dc),
+        fetchDailyInsights(account.id, token, dc),
       ]);
       setCampaigns(camps);
       setDailyData(daily);
@@ -35,7 +35,7 @@ export function Dashboard({ token, accounts, onDisconnect }) {
       setError(e.message);
     }
     setLoading(false);
-  }, [selectedAccount, datePreset, token]);
+  }, [selectedAccount, dateConfig, token]);
 
   // Auto-refresh every 15 min
   const { lastUpdated, secondsUntilRefresh, triggerRefresh } = useAutoRefresh(loadData);
@@ -43,13 +43,13 @@ export function Dashboard({ token, accounts, onDisconnect }) {
   // Switch account
   const handleAccountChange = (acc) => {
     setSelectedAccount(acc);
-    loadData(acc, datePreset);
+    loadData(acc, dateConfig);
   };
 
-  // Switch date range
-  const handleDateChange = (preset) => {
-    setDatePreset(preset);
-    loadData(selectedAccount, preset);
+  // Switch date range (preset string or { since, until } object)
+  const handleDateChange = (dc) => {
+    setDateConfig(dc);
+    loadData(selectedAccount, dc);
   };
 
   // Compute KPI totals
@@ -79,24 +79,27 @@ export function Dashboard({ token, accounts, onDisconnect }) {
           <span className="sub">נתונים בזמן אמת · מתעדכן אוטומטית</span>
         </div>
         <div className="header-actions">
-          <DateRangePicker value={datePreset} onChange={handleDateChange} />
+          <DateRangePicker value={dateConfig} onChange={handleDateChange} />
           <button onClick={onDisconnect} className="btn-outline">🔌 התנתק</button>
         </div>
       </header>
 
-      {/* Multi-account tabs */}
-      {accounts.length > 1 && (
+      {/* Account selector */}
+      {accounts.length > 0 && (
         <div className="accounts-bar">
-          <span className="bar-label">חשבון:</span>
-          {accounts.map((acc) => (
-            <button
-              key={acc.id}
-              onClick={() => handleAccountChange(acc)}
-              className={`chip ${selectedAccount?.id === acc.id ? 'chip-active' : ''}`}
-            >
-              {acc.name}
-            </button>
-          ))}
+          <span className="bar-label">חשבון פרסום:</span>
+          <select
+            className="account-select"
+            value={selectedAccount?.id || ''}
+            onChange={(e) => {
+              const acc = accounts.find((a) => a.id === e.target.value);
+              if (acc) handleAccountChange(acc);
+            }}
+          >
+            {accounts.map((acc) => (
+              <option key={acc.id} value={acc.id}>{acc.name}</option>
+            ))}
+          </select>
         </div>
       )}
 

@@ -1,0 +1,3 @@
+[     949ms] [INFO] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold @ http://localhost:3001/static/js/bundle.js:33028
+[    1201ms] [VERBOSE] [DOM] Password field is not contained in a form: (More info: https://goo.gl/9p2vKq) %o @ http://localhost:3001/:0
+[    8588ms] [ERROR] Failed to load resource: the server responded with a status of 400 () @ https://graph.facebook.com/v19.0/me/adaccounts?fields=name,currency,account_status&access_token=EAFYyHkpDPKkBRm1zZC3Xcj97SZCLHUB5zpxZA81f7T0mI92VZBgCdj5Vt7LwgsujHVkLPDV2aRLXXKxYG9NFn0K4ae6qpMoDDi7uoWZCD2DY4Rq4OWVEoo0yztHWWYfa0FptLKNGZCGINZCUjzz9CgOWeUHYUoCw5O7acz1Xq9RbxMl3gxipQRet7cmpQ9caNEfUXZAlZBJGZCtwSwxJVwOj8w0HXF452dZAwZDZD:0

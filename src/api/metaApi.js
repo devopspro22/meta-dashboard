@@ -1,5 +1,14 @@
 const FB_API = 'https://graph.facebook.com/v19.0';
 
+// Build date parameter string for API calls
+// dateConfig: string preset ('last_30d') or object ({ since: 'YYYY-MM-DD', until: 'YYYY-MM-DD' })
+function buildDateParam(dateConfig) {
+  if (dateConfig && typeof dateConfig === 'object') {
+    return `time_range=${encodeURIComponent(JSON.stringify({ since: dateConfig.since, until: dateConfig.until }))}`;
+  }
+  return `date_preset=${dateConfig || 'last_30d'}`;
+}
+
 // Fetch all ad accounts for a token
 export async function fetchAdAccounts(token) {
   if (!token) throw new Error('Access token is required');
@@ -14,18 +23,20 @@ export async function fetchAdAccounts(token) {
 }
 
 // Fetch campaigns with aggregate insights for a date range
-// datePreset: 'last_7d' | 'last_14d' | 'last_30d'
-export async function fetchCampaigns(accountId, token, datePreset = 'last_30d') {
+// dateConfig: preset string ('last_30d') or { since, until } object
+export async function fetchCampaigns(accountId, token, dateConfig = 'last_30d') {
   if (!token) throw new Error('Access token is required');
-  const fields = [
-    'name',
-    'status',
-    'objective',
-    `insights.date_preset(${datePreset}){spend,impressions,clicks,ctr,cpm,reach,actions,purchase_roas}`,
-  ].join(',');
+
+  // For insights field: presets use date_preset param, custom uses time_range
+  const insightsParam = typeof dateConfig === 'object'
+    ? `insights{spend,impressions,clicks,ctr,cpm,reach,actions,purchase_roas}`
+    : `insights.date_preset(${dateConfig}){spend,impressions,clicks,ctr,cpm,reach,actions,purchase_roas}`;
+
+  const fields = ['name', 'status', 'objective', insightsParam].join(',');
+  const dateParam = buildDateParam(dateConfig);
 
   const res = await fetch(
-    `${FB_API}/${accountId}/campaigns?fields=${fields}&limit=100&access_token=${token}`
+    `${FB_API}/${accountId}/campaigns?fields=${fields}&limit=100&${dateParam}&access_token=${token}`
   );
   const data = await res.json();
   if (data.error) throw new Error(data.error.message);
@@ -34,11 +45,12 @@ export async function fetchCampaigns(accountId, token, datePreset = 'last_30d') 
 }
 
 // Fetch daily time-series data for the chart
-// datePreset: 'last_7d' | 'last_14d' | 'last_30d'
-export async function fetchDailyInsights(accountId, token, datePreset = 'last_30d') {
+// dateConfig: preset string ('last_30d') or { since, until } object
+export async function fetchDailyInsights(accountId, token, dateConfig = 'last_30d') {
   if (!token) throw new Error('Access token is required');
+  const dateParam = buildDateParam(dateConfig);
   const res = await fetch(
-    `${FB_API}/${accountId}/insights?fields=spend,impressions,clicks,actions&date_preset=${datePreset}&time_increment=1&access_token=${token}`
+    `${FB_API}/${accountId}/insights?fields=spend,impressions,clicks,actions&${dateParam}&time_increment=1&access_token=${token}`
   );
   const data = await res.json();
   if (data.error) throw new Error(data.error.message);
