@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/Meta-Dashboard/static/css/main.0e129061.css",
+    "main.js": "/Meta-Dashboard/static/js/main.9e75d880.js",
+    "index.html": "/Meta-Dashboard/index.html",
+    "main.0e129061.css.map": "/Meta-Dashboard/static/css/main.0e129061.css.map",
+    "main.9e75d880.js.map": "/Meta-Dashboard/static/js/main.9e75d880.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.0e129061.css",
+    "static/js/main.9e75d880.js"
+  ]
+}
