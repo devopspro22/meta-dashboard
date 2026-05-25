@@ -1,0 +1,333 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - banner [ref=e3]:
+      - generic [ref=e4]:
+        - link "MaxBot" [ref=e5] [cursor=pointer]:
+          - /url: /
+          - img "MaxBot" [ref=e6]
+        - navigation [ref=e7]:
+          - link "תכונות" [ref=e8] [cursor=pointer]:
+            - /url: "#features"
+          - link "למי זה מתאים" [ref=e9] [cursor=pointer]:
+            - /url: "#audiences"
+          - link "שאלות" [ref=e10] [cursor=pointer]:
+            - /url: "#faq"
+          - link "צור קשר" [ref=e11] [cursor=pointer]:
+            - /url: "#contact"
+        - link "התחילו היום" [ref=e12] [cursor=pointer]:
+          - /url: /onboarding
+    - main [ref=e13]:
+      - generic [ref=e16]:
+        - generic [ref=e17]:
+          - heading "צ'אטבוט AI לוואטסאפ שהעסק שלך חיכה לו" [level=1] [ref=e18]:
+            - text: צ'אטבוט AI לוואטסאפ
+            - generic [ref=e19]:
+              - text: שהעסק שלך
+              - generic [ref=e20]: חיכה לו
+          - paragraph [ref=e21]:
+            - text: בוט AI שעונה, מסנן לידים ומעביר אליך רק את הרלוונטיים 24/7.
+            - text: מחובר לספקי WhatsApp המובילים.
+          - generic [ref=e22]:
+            - link "בקש דמו חינם" [ref=e23] [cursor=pointer]:
+              - /url: "#contact"
+              - generic [ref=e24]: בקש דמו חינם
+            - link "גלה את התכונות" [ref=e26] [cursor=pointer]:
+              - /url: "#features"
+              - generic [ref=e27]: גלה את התכונות
+          - generic [ref=e29]:
+            - generic [ref=e30]: ✓ ללא כרטיס אשראי
+            - generic [ref=e31]: ✓ הדגמה תוך 24 שעות
+        - generic [ref=e32]:
+          - img "MaxBot Dashboard" [ref=e40]
+          - paragraph [ref=e41]: 📸 ממשק המערכת האמיתי
+      - generic [ref=e44]:
+        - generic [ref=e45]:
+          - generic [ref=e46]: 500+
+          - generic [ref=e47]: עסקים משתמשים
+        - generic [ref=e48]:
+          - generic [ref=e49]: "3"
+          - generic [ref=e50]: ספקי WhatsApp
+        - generic [ref=e51]:
+          - generic [ref=e52]: AI
+          - generic [ref=e53]: GPT / Claude / Gemini
+        - generic [ref=e54]:
+          - generic [ref=e55]: 99.9%
+          - generic [ref=e56]: זמינות המערכת
+      - generic [ref=e57]:
+        - generic [ref=e58]:
+          - heading "כל מה שצ'אטבוט מקצועי צריך" [level=2] [ref=e59]
+          - paragraph [ref=e60]: מהממשק ועד ה-AI - הכל במקום אחד
+        - generic [ref=e61]:
+          - generic [ref=e63]:
+            - generic [ref=e64]: פיצ'רים
+            - generic [ref=e65]: שעובדים
+            - generic [ref=e66]: בשבילך
+            - paragraph [ref=e67]: מהרגע הראשון - הבוט מוכן לענות ולנהל לידים
+          - generic [ref=e68]:
+            - figure [ref=e69]:
+              - article [ref=e70]:
+                - generic [ref=e71]:
+                  - generic [ref=e72]:
+                    - generic [ref=e73]: "01"
+                    - heading "שיחות בזמן אמת" [level=3] [ref=e74]
+                  - img "שיחות בזמן אמת" [ref=e75]
+                - paragraph [ref=e76]: תצוגת שיחות בסגנון WhatsApp. כל השיחות, כל הלקוחות - בממשק אחד. מסנן, חיפוש ותיוג.
+                - link "הצטרפו עכשיו" [ref=e77] [cursor=pointer]:
+                  - /url: /onboarding
+            - figure [ref=e78]:
+              - article [ref=e79]:
+                - generic [ref=e80]:
+                  - generic [ref=e81]:
+                    - generic [ref=e82]: "02"
+                    - heading "AI חכם" [level=3] [ref=e83]
+                  - img "AI חכם" [ref=e84]
+                - paragraph [ref=e85]: OpenAI, Claude, Gemini - הלקוח בוחר את המודל המתאים לו.
+                - link "הצטרפו עכשיו" [ref=e86] [cursor=pointer]:
+                  - /url: /onboarding
+            - figure [ref=e87]:
+              - article [ref=e88]:
+                - generic [ref=e89]:
+                  - generic [ref=e90]:
+                    - generic [ref=e91]: "03"
+                    - heading "דשבורד ניהול" [level=3] [ref=e92]
+                  - img "דשבורד ניהול" [ref=e93]
+                - paragraph [ref=e94]: סטטיסטיקות, ניהול לידים ואנשי קשר בזמן אמת.
+                - link "הצטרפו עכשיו" [ref=e95] [cursor=pointer]:
+                  - /url: /onboarding
+            - figure [ref=e96]:
+              - article [ref=e97]:
+                - generic [ref=e98]:
+                  - generic [ref=e99]:
+                    - generic [ref=e100]: "04"
+                    - heading "3 ספקי WhatsApp" [level=3] [ref=e101]
+                  - img "3 ספקי WhatsApp" [ref=e102]
+                - paragraph [ref=e103]: מחובר לספקי WhatsApp המובילים - גמישות מלאה בבחירת הספק.
+                - link "הצטרפו עכשיו" [ref=e104] [cursor=pointer]:
+                  - /url: /onboarding
+            - figure [ref=e105]:
+              - article [ref=e106]:
+                - generic [ref=e107]:
+                  - generic [ref=e108]:
+                    - generic [ref=e109]: "05"
+                    - heading "לידים מפייסבוק" [level=3] [ref=e110]
+                  - img "לידים מפייסבוק" [ref=e111]
+                - paragraph [ref=e112]: כל ליד מפייסבוק מקבל מענה מיידי - אוטומטי, בעברית, בלי לחכות.
+                - link "הצטרפו עכשיו" [ref=e113] [cursor=pointer]:
+                  - /url: /onboarding
+            - figure [ref=e114]:
+              - article [ref=e115]:
+                - generic [ref=e116]:
+                  - generic [ref=e117]:
+                    - generic [ref=e118]: "06"
+                    - heading "Follow-up אוטומטי" [level=3] [ref=e119]
+                  - img "Follow-up אוטומטי" [ref=e120]
+                - paragraph [ref=e121]: הודעות מעקב ללידים שלא ענו - אוטומטי לחלוטין.
+                - link "הצטרפו עכשיו" [ref=e122] [cursor=pointer]:
+                  - /url: /onboarding
+      - generic [ref=e125]:
+        - generic [ref=e126]:
+          - generic [ref=e127]: 🤖 הצ'אטבוט בפעולה
+          - heading "כך הבוט מטפל בלידים שלכם" [level=2] [ref=e128]:
+            - text: כך הבוט מטפל
+            - text: בלידים שלכם
+          - paragraph [ref=e129]: הבוט מגיב באופן אוטומטי, מנהל שיחה טבעית בעברית, מסנן ומסווג לידים - ומעביר אליכם רק את הרלוונטיים.
+          - list [ref=e130]:
+            - listitem [ref=e131]: עונה תוך שניות, 24 שעות ביממה
+            - listitem [ref=e132]: שיחה טבעית בעברית
+            - listitem [ref=e133]: אוסף פרטים ומעביר לכם ליד מוכן
+          - link "רוצה לראות את זה בפעולה?" [ref=e134] [cursor=pointer]:
+            - /url: /onboarding
+            - text: רוצה לראות את זה בפעולה?
+            - img [ref=e135]
+        - generic [ref=e139]:
+          - generic [ref=e140]:
+            - generic [ref=e141]: 9:41
+            - generic [ref=e142]:
+              - img [ref=e143]
+              - img [ref=e148]
+              - img [ref=e153]
+          - generic [ref=e157]:
+            - generic [ref=e158]: M
+            - generic [ref=e159]:
+              - generic [ref=e160]: MaxBot · עוזר AI
+              - generic [ref=e163]: מקלידה…
+            - generic [ref=e164]:
+              - img [ref=e165]
+              - img [ref=e168]
+          - generic [ref=e172]: היום
+          - generic [ref=e179]:
+            - generic [ref=e180]:
+              - img [ref=e181]
+              - generic [ref=e186]: הקלד הודעה…
+            - img [ref=e188]
+      - generic [ref=e191]:
+        - heading "3 צעדים לצ'אטבוט שעובד" [level=2] [ref=e192]
+        - paragraph [ref=e193]: מהגדרה ועד שיחות ראשונות - תוך שעות
+        - generic [ref=e194]:
+          - generic [ref=e195]:
+            - img "מגדירים את הבוט" [ref=e196]
+            - heading "מגדירים את הבוט" [level=3] [ref=e197]
+            - paragraph [ref=e198]: טופס פרומפט חכם - מסביר לבוט מי אתה, מה אתה מוכר, ואיך לענות ללקוחות
+          - generic [ref=e199]:
+            - img "מחברים WhatsApp" [ref=e200]
+            - heading "מחברים WhatsApp" [level=3] [ref=e201]
+            - paragraph [ref=e202]: בוחרים ספק ומגדירים Webhook - בדקות. גם Meta, Whapi, וגם GreenAPI
+          - generic [ref=e203]:
+            - img "מקבלים לידים" [ref=e204]
+            - heading "מקבלים לידים" [level=3] [ref=e205]
+            - paragraph [ref=e206]: הבוט עונה, אוסף פרטים ומעביר אליך - הכל נשמר בדשבורד
+      - generic [ref=e208]:
+        - heading "מה מתאים לך?" [level=2] [ref=e209]
+        - paragraph [ref=e210]: שתי דרכים להתחיל עם MaxBot
+        - generic [ref=e211]:
+          - generic [ref=e212] [cursor=pointer]:
+            - generic [ref=e213]:
+              - img "לבעל עסק" [ref=e214]
+              - heading "לבעל עסק" [level=3] [ref=e215]
+              - paragraph [ref=e216]: צ'אטבוט AI שמנהל לידים בשבילך 24/7 - מהרגע הראשון
+            - list [ref=e217]:
+              - listitem [ref=e218]: צ'אטבוט מוכן לעסק שלך
+              - listitem [ref=e219]: הגדרה פשוטה בעברית
+              - listitem [ref=e220]: תמיכה מלאה בהקמה
+              - listitem [ref=e221]: עדכונים שוטפים
+            - link "הצטרפו עכשיו" [ref=e223]:
+              - /url: /onboarding
+          - generic [ref=e224] [cursor=pointer]:
+            - generic [ref=e225]: פופולרי
+            - generic [ref=e226]:
+              - img "לסוכנויות" [ref=e227]
+              - heading "לסוכנויות ומשווקים" [level=3] [ref=e228]
+              - paragraph [ref=e229]: מוצר White Label מוכן - תחת הלוגו שלך, ללקוחות שלך
+            - list [ref=e230]:
+              - listitem [ref=e231]: White Label מלא
+              - listitem [ref=e232]: מוצר תחת השם שלך
+              - listitem [ref=e233]: תמיכה טכנית מהצוות
+              - listitem [ref=e234]: קוד פתוח / Self-Hosted
+            - link "שוחחו על שותפות" [ref=e236]:
+              - /url: "#contact"
+      - generic [ref=e238]:
+        - heading "שאלות נפוצות" [level=2] [ref=e239]
+        - paragraph [ref=e240]: כל מה שרציתם לדעת לפני שמתחילים
+        - generic [ref=e241]:
+          - button "כמה זמן לוקח להקים את הבוט? +" [ref=e243]:
+            - generic [ref=e244]: כמה זמן לוקח להקים את הבוט?
+            - generic [ref=e245]: +
+          - button "האם צריך ידע טכני? +" [ref=e247]:
+            - generic [ref=e248]: האם צריך ידע טכני?
+            - generic [ref=e249]: +
+          - button "עם אילו ספקי WhatsApp MaxBot עובד? +" [ref=e251]:
+            - generic [ref=e252]: עם אילו ספקי WhatsApp MaxBot עובד?
+            - generic [ref=e253]: +
+          - button "האם ניתן לנהל כמה עסקים מאותה מערכת? +" [ref=e255]:
+            - generic [ref=e256]: האם ניתן לנהל כמה עסקים מאותה מערכת?
+            - generic [ref=e257]: +
+          - button "מה קורה כשלקוח פונה מחוץ לשעות הפעילות? +" [ref=e259]:
+            - generic [ref=e260]: מה קורה כשלקוח פונה מחוץ לשעות הפעילות?
+            - generic [ref=e261]: +
+          - button "האם ניתן לראות את כל השיחות עם הלקוחות? +" [ref=e263]:
+            - generic [ref=e264]: האם ניתן לראות את כל השיחות עם הלקוחות?
+            - generic [ref=e265]: +
+      - generic [ref=e267]:
+        - generic [ref=e270]:
+          - generic [ref=e271]:
+            - generic [ref=e272]: מוכן להתחיל?
+            - heading "בקש דמו חינם" [level=2] [ref=e273]:
+              - text: בקש דמו
+              - text: חינם
+            - paragraph [ref=e274]: נחזור אליך תוך 24 שעות עם הדגמה מותאמת לעסק שלך. ללא התחייבות.
+            - generic [ref=e275]:
+              - generic [ref=e276]:
+                - img [ref=e278]
+                - generic [ref=e281]: ניתן גם לכתוב ישירות בוואטסאפ
+              - generic [ref=e282]:
+                - img [ref=e284]
+                - generic [ref=e287]: או לשלוח מייל לצוות שלנו
+              - generic [ref=e288]:
+                - img [ref=e290]
+                - generic [ref=e292]: מענה תוך 24 שעות בימי עסקים
+          - generic [ref=e294]:
+            - generic [ref=e295]:
+              - generic [ref=e296]: שם מלא*
+              - textbox "ישראל ישראלי" [ref=e297]
+            - generic [ref=e298]:
+              - generic [ref=e299]: טלפון / WhatsApp*
+              - textbox "050-0000000" [ref=e300]
+            - generic [ref=e301]:
+              - generic [ref=e302]: כתובת מייל
+              - textbox "name@example.com" [ref=e303]
+            - generic [ref=e304]:
+              - generic [ref=e305]: תחום העסק
+              - textbox "נדל״ן, רפואה, קוסמטיקה..." [ref=e306]
+            - generic [ref=e307]:
+              - checkbox "קראתי ואני מסכים/ה למדיניות הפרטיות" [ref=e308] [cursor=pointer]
+              - generic [ref=e309]:
+                - text: קראתי ואני מסכים/ה ל
+                - link "מדיניות הפרטיות" [ref=e310] [cursor=pointer]:
+                  - /url: /privacy
+            - button "שלח בקשה לדמו ←" [ref=e311] [cursor=pointer]
+            - paragraph [ref=e312]: פרטיך שמורים ולא יועברו לצד שלישי
+        - generic [ref=e314]:
+          - generic [ref=e315]:
+            - generic [ref=e316]:
+              - img "MaxBot" [ref=e317]
+              - paragraph [ref=e318]:
+                - text: מערכת ניהול צ'אטבוטים לוואטסאפ
+                - text: מבוסס AI
+            - generic [ref=e319]:
+              - heading "מוצר" [level=4] [ref=e320]
+              - list [ref=e321]:
+                - listitem [ref=e322]:
+                  - link "תכונות" [ref=e323] [cursor=pointer]:
+                    - /url: "#"
+                - listitem [ref=e324]:
+                  - link "תמחור" [ref=e325] [cursor=pointer]:
+                    - /url: "#"
+                - listitem [ref=e326]:
+                  - link "שאלות נפוצות" [ref=e327] [cursor=pointer]:
+                    - /url: "#"
+            - generic [ref=e328]:
+              - heading "סוכנויות" [level=4] [ref=e329]
+              - list [ref=e330]:
+                - listitem [ref=e331]:
+                  - link "White Label" [ref=e332] [cursor=pointer]:
+                    - /url: "#"
+                - listitem [ref=e333]:
+                  - link "שותפות" [ref=e334] [cursor=pointer]:
+                    - /url: "#"
+                - listitem [ref=e335]:
+                  - link "תמיכה טכנית" [ref=e336] [cursor=pointer]:
+                    - /url: "#"
+            - generic [ref=e337]:
+              - heading "צור קשר" [level=4] [ref=e338]
+              - list [ref=e339]:
+                - listitem [ref=e340]:
+                  - link "WhatsApp" [ref=e341] [cursor=pointer]:
+                    - /url: "#"
+                - listitem [ref=e342]:
+                  - link "מייל" [ref=e343] [cursor=pointer]:
+                    - /url: "#"
+                - listitem [ref=e344]:
+                  - link "אינסטגרם" [ref=e345] [cursor=pointer]:
+                    - /url: "#"
+          - generic [ref=e346]:
+            - generic [ref=e347]: © 2026 MaxBot. כל הזכויות שמורות.
+            - generic [ref=e348]:
+              - link "מדיניות פרטיות" [ref=e349] [cursor=pointer]:
+                - /url: /privacy
+              - generic [ref=e350]: ·
+              - link "תקנון" [ref=e351] [cursor=pointer]:
+                - /url: /terms
+              - generic [ref=e352]: ·
+              - generic [ref=e353]: עוצב ופותח בישראל 🇮🇱
+  - generic [ref=e358] [cursor=pointer]:
+    - button "Open Next.js Dev Tools" [ref=e359]:
+      - img [ref=e360]
+    - generic [ref=e363]:
+      - button "Open issues overlay" [ref=e364]:
+        - generic [ref=e365]:
+          - generic [ref=e366]: "0"
+          - generic [ref=e367]: "1"
+        - generic [ref=e368]: Issue
+      - button "Collapse issues badge" [ref=e369]:
+        - img [ref=e370]
+  - alert [ref=e372]
