@@ -501,3 +501,11 @@ tr:hover td { background: #1c2128; }
   color: #8b949e;
   font-size: 13px;
 }
+
+/* ── Header Actions ─────────────────────────────────────── */
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
