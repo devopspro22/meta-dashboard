@@ -1,47 +1,76 @@
-# Matarot — דשבורד קמפיינים פייסבוק
+# 📊 Meta Ads Dashboard
 
-ממשק ווב לניהול ומעקב אחרי קמפיינים של Meta Ads (Facebook/Instagram) בזמן אמת.
+דשבורד מקצועי לניטור ביצועי קמפיינים ב-Meta Ads (Facebook / Instagram).
 
-## תכונות
+מציג: הוצאות · לידים · ROAS · CTR · CPM · CPL · גרף יומי  
+מתעדכן אוטומטית כל 15 דקות.
 
-- 🔐 התחברות עם Meta Access Token (לא נשמר בשרת)
-- 📊 סטטיסטיקות מרכזיות: הוצאות, חשיפות, קליקים
-- 🔎 חיפוש וסינון קמפיינים לפי שם וסטטוס
-- 📈 ויזואליזציה של הוצאות יחסיות
-- 🔄 רענון נתונים בזמן אמת
+---
 
-## התקנה מהירה
+## 🚀 Deploy בלחיצה אחת
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/YOUR_USERNAME/fb-dashboard&env=REACT_APP_META_TOKEN&envDescription=Meta%20Access%20Token%20from%20Graph%20API%20Explorer)
+
+---
+
+## 📋 הוראות Fork + Deploy
+
+### שלב 1 — Fork
+לחץ על `Fork` בפינה הימנית העליונה של הרפו.
+
+### שלב 2 — קבל Meta Access Token
+1. כנס ל-[Graph API Explorer](https://developers.facebook.com/tools/explorer/)
+2. בחר את ה-App שלך
+3. הוסף הרשאות: `ads_read` + `ads_management`
+4. לחץ `Generate Access Token`
+5. העתק את ה-Token
+
+### שלב 3 — Deploy ל-Vercel
+1. כנס ל-[vercel.com](https://vercel.com) וחבר את ה-GitHub שלך
+2. בחר את ה-Fork שלך
+3. בהגדרות `Environment Variables` הוסף:
+   - **Key:** `REACT_APP_META_TOKEN`
+   - **Value:** הטוקן שהעתקת
+4. לחץ `Deploy`
+
+### שלב 4 — גמור! ✅
+הדשבורד שלך זמין בכתובת שסיפקה Vercel.
+
+---
+
+## 🛠️ הרצה מקומית
 
 ```bash
+git clone https://github.com/YOUR_USERNAME/fb-dashboard
+cd fb-dashboard
 npm install
+cp .env.example .env.local
+# ערוך .env.local והוסף את הטוקן שלך
 npm start
 ```
 
-## העלאה ל-GitHub + Vercel
+---
 
-1. **GitHub:**
-```bash
-git init
-git add .
-git commit -m "first commit"
-gh repo create matarot-fb-dashboard --public --push
-```
+## 📊 מדדים מוצגים
 
-2. **Vercel:**
-```bash
-npx vercel --prod
-```
-   או: Import ב-[vercel.com/new](https://vercel.com/new)
+| מדד | תיאור |
+|---|---|
+| **Spend** | סך הוצאות בתקופה הנבחרת |
+| **Leads** | מספר לידים (Lead Gen campaigns) |
+| **CPL** | עלות לליד |
+| **ROAS** | החזר על ההשקעה |
+| **CTR** | אחוז הקלקות |
+| **CPM** | עלות ל-1000 חשיפות |
+| **Reach** | טווח הגעה |
 
-## קבלת Access Token
+---
 
-1. עבור ל-[Graph API Explorer](https://developers.facebook.com/tools/explorer/)
-2. בחר את האפליקציה שלך (או צור חדשה)
-3. הוסף הרשאות: `ads_read` + `ads_management`
-4. לחץ **Generate Access Token**
+## ⚙️ הגדרות
 
-## טכנולוגיות
+| משתנה | תיאור |
+|---|---|
+| `REACT_APP_META_TOKEN` | Meta Access Token (חובה אם לא נכנסים ידנית) |
 
-- React 18
-- Meta Graph API v19.0
-- CSS순수 (ללא תלויות UI)
+---
+
+Built with React · Meta Graph API v19.0
