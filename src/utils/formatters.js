@@ -24,7 +24,7 @@ export function formatRoas(value) {
 
 // Format CPL (cost per lead)
 export function formatCpl(spend, leads, symbol = '₪') {
-  if (!leads || leads === 0) return '—';
+  if (!leads) return '—';
   return formatCurrency(spend / leads, symbol);
 }
 
